@@ -1,0 +1,78 @@
+1,安装 request 包
+2，安装python加密库，
+你可以使用以下pip 命令：
+
+pip3 install -i https://pypi.douban.com/simple pycryptodome
+
+在Windows 系统上安装则稍有不同：
+
+pip3 install -i https://pypi.douban.com/simple pycryptodomex
+
+python生成二维码，需要依赖包qrcode和PIL（二维码的实质就是一个url。）
+python3安装PIL：pip install PIL(不能用）
+python2安装PIL：pip install pillow（可以用）
+pip install PIL
+Collecting PIL
+  Could not find a version that satisfies the requirement PIL (from versions: )
+No matching distribution found for PIL
+You are using pip version 10.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+----需要升级一下 pip版本
+--
+pip install pillow----主要用于图片处理
+Collecting pillow
+  Downloading https://files.pythonhosted.org/packages/55/ea/305f61258278790706e69f01c53e107b0830ea5a4a69aa1f2c11fe605ed3/Pillow-5.3.0-cp37-cp37m-win_amd64.whl (1.6MB)
+    100% |████████████████████████████████| 1.6MB 3.9MB/s
+Installing collected packages: pillow
+Successfully installed pillow-5.3.0----也没用
+安装：pip install django-qrcode
+
+pip install qrcode--用于生成二维码
+pip install pillow---主要用于图片处理
+
+内置的 configparser 模块，可以读取写入配置信息
+pip install configparse
+
+当使用https 请求服务器地址的时候， 一定要加上 报文头， headers，否则报错
+当碰到一些奇怪不知道怎么解决的问题时候， 可以换一种方式， 比如使用其他工具协助编写下。
+
+下载虫师的
+https://pan.baidu.com/share/init?surl=01y-X--o6iSd9WTDv5K4XQ
+
+"../../config.ini"---当测试案例执行的时候， 访问的文件， 是以这个测试case所在的目录，层层匹配 获取到 ini文件的
+配置文件所在的目录 是当对于当前python文件 而言的
+
+关于命名问题：
+1，case名称必须要以 test开头， 才会引入unittest， 函数定义 也是如此,跟类名无关
+2..py脚本名称，不能用“-‘ 分隔开。会加载不进去
+
+使用 unittest脚本名称有要求吗？
+
+一个测试案例中的 def（）语句 执行是按照 名称的 字母排序进行， 所以命名的时候 要注意
+全局变量
+
+在生成二维码的过程中，一种思路不行， 需要换一种思路。一直想通过图片名称来区别， 其实有时候需要换一种思路，进行图片叠加。
+
+安装：serial :pip install serial: pip install pyserial
+解决方法，卸载之后重新安装两个第三方库文件：pip uninstall serial 和pip uninstall pyserial,卸载之后就可以重新安装
+/PyYAML-3.13-cp37-cp37m-win_amd64.whl (206kB)  /future-0.17.1.tar.gz (829kB)
+python serial 模块使用方法:串口通讯
+import serial
+①选择设备
+ser=serial.Serial("/dev/ttyUSB0",9600,timeout=0.5) #使用USB连接串行口
+ser=serial.Serial("/dev/ttyAMA0",9600,timeout=0.5) #使用树莓派的GPIO口连接串行口
+ser=serial.Serial(1,9600,timeout=0.5)#winsows系统使用com1口连接串行口
+ser=serial.Serial("com1",9600,timeout=0.5)#winsows系统使用com1口连接串行口
+ser=serial.Serial("/dev/ttyS1",9600,timeout=0.5)#Linux系统使用com1口连接串行口
+print ser.name#打印设备名称
+print ser.port#打印设备名
+ser.open() #打开端口
+s = ser.read(10)#从端口读10个字节
+ser.write("hello")#向端口写数据
+ser.close()#关闭端口
+data = ser.read(20) #是读20个字符
+
+isinstance(dictdata.get(key), list)
+假如是 list的话， 处理方案
+
+安装git，在setting配置 git.exe，，进行测试，测试成功， 下载空的。autotest-netpay 工程,进行commit and push操作

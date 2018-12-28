@@ -1,0 +1,1725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NETPAY front system Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>NETPAY front system Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-12-25 15:48:14</p>
+<p class='attribute'><strong>Duration:</strong> 0:24:16.182505</p>
+<p class='attribute'><strong>Status:</strong> Pass 30 Failure 16 Error 4</p>
+
+<p class='description'>Implementation description: </p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)' class="btn btn-xs btn-primary">Summary</a>
+<a href='javascript:showCase(1)' class="btn btn-xs btn-danger">Failed</a>
+<a href='javascript:showCase(2)' class="btn btn-xs btn-info">All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_query_refund_bestpay.TestPayVoidCheck: 翼支付直连渠道条码支付-撤销</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 翼支付直连渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 请扫描翼支付条码：条码是511293444147981582
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarQuery: 翼支付直连条码支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: {"msgType":"bestpay.query","payTime":"2018-12-25 15:48:49","connectSys":"ORIGINAL","merName":"翼支付直连回归商户","mid":"898310077771111","invoiceAmount":1,"settleDate":"2018-12-25","billFunds":"现金:1","tid":"00810001","couponAmount":0,"targetMid":"01440109025345000","billFundsDesc":"现金支付0.01元。","targetStatus":"true","seqId":"00001900032N","merOrderId":"432108790595000717917677342597","refundAmount":0,"targetSys":"BestPay","msgSrc":"NETPAY","settleRefId":"00004992435W","totalAmount":1,"responseTimestamp":"2018-12-25 15:48:50","errCode":"SUCCESS","goodsTradeNo":"1000201812251548495057175075","refId":"00004992435W","status":"TRADE_SUCCESS","sign":"DE410759B6A4633FA94B2F2A6E350185"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_BarRefund: 翼支付直连条码支付退款</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: {"msgType":"bestpay.refund","payTime":"2018-12-25 15:48:50","connectSys":"ORIGINAL","msgSrc":"NETPAY","merName":"翼支付直连回归商户","mid":"898310077771111","refundStatus":"SUCCESS","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00000001","refundOrderId":"10001812253324850153166233","totalAmount":1,"targetMid":"01440109025345000","responseTimestamp":"2018-12-25 15:48:50","errCode":"SUCCESS","targetStatus":"true","seqId":"00001900033N","merOrderId":"432108790595000717917677342597","status":"TRADE_SUCCESS","targetSys":"BestPay","sign":"BFE4CAB82CA65320ABA1E9D2E0B0AB19"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_bar_sale_void_acp.TestPayVoidCheck: 银联云闪付ACP渠道条码支付-撤销</td>
+    <td>3</td>
+    <td>2</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c2',3)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 银联云闪付ACP渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 请扫描云闪付条码：条码是6260344592526361428
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_b_Query: 银联云闪付ACP条码支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        error</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\test_bar_sale_void_acp.py", line 65, in test_b_Query
+    "\"requestTimestamp\":\""+self.now_time+"\"," \
+NameError: name 'mer_orderId' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_BarVoid: 银联云闪付ACP条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: {"bankInfo":"招商银行(03080000)","msgType":"acp.cancel","bankCardNo":"622575******3108","connectSys":"ORIGINAL","msgSrc":"NETPAY","merName":"acp渠道条码支付测试","mid":"898310148160568","settleDate":"2018-12-25","settleKey":"48020000   00049992   2196941225155102","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"48020000","responseTimestamp":"2018-12-25 15:51:03","errCode":"SUCCESS","cardAttr":"CREDIT_CARD","targetOrderId":"41181225570616175731","targetStatus":"00","seqId":"00001900034N","merOrderId":"926483968388130806900764661429","status":"TRADE_CLOSED","targetSys":"ACP","sign":"DB2EF51A0EC97AA8D8D7E7357972A566"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_void_ali_mybank2.TestPayVoidCheck: alipay-mybank2-pay-void</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',2)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 支付宝mybank2渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 请扫描支付宝条码：条码是282532457131258489
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarVoid: alipay mybank2条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: {"msgType":"trade.cancel","connectSys":"MYBANK2","msgSrc":"NETPAY","errMsg":"系统异常","merName":"网商2渠道支付宝测试商户","mid":"898310077779999","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"2088231278397693","responseTimestamp":"2018-12-25 16:04:05","errCode":"TARGET_FAIL","cardAttr":"BALANCE","targetOrderId":"2018122522001478510527654711","targetStatus":"20000|aop.ACQ.SYSTEM_ERROR","seqId":"00001900035N","merOrderId":"991647632991944809830948584135","status":"TRADE_SUCCESS","targetSys":"Alipay 2.0","sign":"EF38B86DE9711F4CA605F666F7D8ADF2"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_void_ali_unionpay.TestPayVoidCheck</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',2)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 支付宝银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 请扫描支付宝条码：条码是288088263687803060
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarVoid: 微信银联渠道条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: {"msgType":"trade.cancel","connectSys":"MYBANK2","msgSrc":"NETPAY","errMsg":"系统异常","merName":"测试渠道优先级","mid":"898310077774444","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"2088921608243355","responseTimestamp":"2018-12-25 16:05:02","errCode":"TARGET_FAIL","cardAttr":"BALANCE","targetOrderId":"2018122522001478510525303254","targetStatus":"20000|aop.ACQ.SYSTEM_ERROR","seqId":"00404300506N","merOrderId":"970474655512109925797943726530","status":"TRADE_SUCCESS","targetSys":"Alipay 2.0","sign":"53891AB619A0E8722EA5CF95E6910D4C"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_void_bestpay.TestPayVoidCheck: 翼支付直连渠道条码支付-撤销</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',2)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 翼支付直连渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 请扫描翼支付条码：条码是510184683573604628
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarVoid: 翼支付直连条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        pass</a>
+
+    <div id='div_pt5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.2: {"msgType":"bestpay.reverse","connectSys":"ORIGINAL","msgSrc":"NETPAY","merName":"翼支付直连回归商户","mid":"898310077771111","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"01440109025345000","responseTimestamp":"2018-12-25 16:05:33","errCode":"SUCCESS","targetStatus":"true","seqId":"00001900036N","merOrderId":"278693898621777832305719860367","status":"TRADE_CLOSED","targetSys":"BestPay","sign":"0C06792B6AC3CCA00B8139706073E121"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_void_uac.TestPayVoidCheck: 银联云闪付UAC渠道条码支付-撤销</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',2)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: 银联云闪付ACP渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 请扫描云闪付条码：条码是6263036196321246758
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarVoid: 银联云闪付UAC条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+        pass</a>
+
+    <div id='div_pt6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.2: {"msgType":"uac.cancel","msgSrc":"NETPAY","merName":"uac渠道条码支付测试","mid":"104310073996272","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"48020000","responseTimestamp":"2018-12-25 16:06:02","errCode":"SUCCESS","targetOrderId":"07181225579608209441","targetStatus":"00","seqId":"00001900038N","merOrderId":"740440414770050340242105204602","status":"TRADE_CLOSED","targetSys":"ACP","sign":"676C135AF09279D2731AD9F60D4B4347"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_bar_sale_void_wx_epcc.TestPayVoidCheck:  Wechat_EPCC_pay_void</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',2)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_BarPay: wechat  EPCC 条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 请扫描条码条码是134611564764686247
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_BarVoid: wechat  EPCC条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+        pass</a>
+
+    <div id='div_pt7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.2: {"bankInfo":"零钱","msgType":"wx.reverse","connectSys":"EPCC","msgSrc":"NETPAY","merName":"epcc网联测试商户","mid":"898310077770000","settleDate":"2018-12-25","settleRefId":"00004992435W","tid":"00810001","totalAmount":1,"targetMid":"233241558","responseTimestamp":"2018-12-25 16:06:40","errCode":"SUCCESS","cardAttr":"BALANCE","targetOrderId":"4200000213201812259288039734","targetStatus":"SUCCESS|SUCCESS","seqId":"00001900039N","merOrderId":"563289845017896589572466471792","status":"TRADE_CLOSED","targetSys":"WXPay","sign":"343381901C805E3D21BF6D773090DD3E"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>test_bar_sale_void_wx_unionpay.TestPayVoidCheck</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',2)">Detail</a></td>
+</tr>
+
+<tr id='ft8.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_BarPay: 支付宝银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.1')" >
+        fail</a>
+
+    <div id='div_ft8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.1: 请扫描条码条码是134535186221094872
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\test_bar_sale_void_wx_unionpay.py", line 56, in test_a_BarPay
+    "bar-code pay fail" + saleresponse.json().get("errCode") )
+AssertionError: 'SYSTEM_BUSY' not found in ['SUCCESS', 'TARGET_FAIL'] : bar-code pay failSYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_BarVoid: 支付宝银联渠道条码支付撤销</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.2')" >
+        fail</a>
+
+    <div id='div_ft8.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.2: {"errCode":"NO_ORDER","errMsg":"无法找到指定的订单","msgSrc":"NETPAY","msgType":"cancel","responseTimestamp":"2018-12-25 16:07:21","sign":"D9AFBD2A0D7DCE279B927296C28CFDFF"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\test_bar_sale_void_wx_unionpay.py", line 75, in test_b_BarVoid
+    "void fail" + response.json().get("errCode") )
+AssertionError: 'NO_ORDER' not found in ['SUCCESS', 'TARGET_FAIL'] : void failNO_ORDER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>testbar_sale_query_refund_acp.TestPayRefund: 银联云闪付条码支付-退货</td>
+    <td>3</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',3)">Detail</a></td>
+</tr>
+
+<tr id='ft9.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay01: 银联云闪付ACP渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.1')" >
+        fail</a>
+
+    <div id='div_ft9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.1: 请扫描云闪付条码:条码是：66666666666666
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_acp.py", line 56, in test_a_Pay01
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"bar-code fail"+saleresponse.json().get("errCode"))
+AssertionError: 'BAD_REQUEST' not found in ['TARGET_FAIL', 'SUCCESS'] : bar-code failBAD_REQUEST
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft9.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_Query: 银联云闪付ACP条码支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.2')" >
+        fail</a>
+
+    <div id='div_ft9.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.2: {"errCode":"NO_ORDER","errMsg":"无法找到指定的订单","msgSrc":"NETPAY","msgType":"query","responseTimestamp":"2018-12-25 16:07:34","sign":"63DAA13FAAD7E2CFC9FA4DB2190719D3"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_acp.py", line 74, in test_b_Query
+    "barcode-query-unionpay case test result is:--" + response.json().get("errCode"))
+AssertionError: 'NO_ORDER' != 'SUCCESS'
+- NO_ORDER
++ SUCCESS
+ : barcode-query-unionpay case test result is:--NO_ORDER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft9.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_c_Refund: 银联云闪付ACP渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.3')" >
+        fail</a>
+
+    <div id='div_ft9.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.3: Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_acp.py", line 91, in test_c_Refund
+    self.assertIn(response.json().get("errCode"),["SUCCESS","TARGET_FAIL"],"refund fail"+response.json().get("errCode"))
+AssertionError: 'NO_ORDER' not found in ['SUCCESS', 'TARGET_FAIL'] : refund failNO_ORDER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>testbar_sale_query_refund_ali_mybank2.TestPayRefund: alipay mybank2 pay-refund</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',3)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_Pay01: alipay mybank2渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 请扫描支付宝条码:条码是：288774063373872640
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Query: 支付宝mybank2渠道条码支付查询 json实现接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.2')" >
+        pass</a>
+
+    <div id='div_pt10.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.2: {"buyerUsername":"zha***@163.com","msgType":"trade.query","payTime":"2018-12-25 16:08:07","connectSys":"MYBANK2","errMsg":"查询成功","merName":"网商2渠道支付宝测试商户","mid":"898310077779999","invoiceAmount":1,"settleDate":"2018-12-25","billFunds":"花呗:1","buyerId":"2088202859778510","tid":"00810001","couponAmount":0,"targetMid":"2088231278397693","cardAttr":"BALANCE","targetOrderId":"2018122522001478510525051750","billFundsDesc":"花呗支付0.01元。","targetStatus":"SUCCESS","seqId":"00001900040N","merOrderId":"722217584632289463380739595358","refundAmount":0,"targetSys":"Alipay 2.0","msgSrc":"NETPAY","settleRefId":"00004992435W","totalAmount":1,"responseTimestamp":"2018-12-25 16:08:08","errCode":"SUCCESS","buyerPayAmount":1,"goodsTradeNo":"1000201812251608063938899712","refId":"00004992435W","status":"TRADE_SUCCESS","sign":"0EC5A11C9B3C263642D232A423C6B15A"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_Refund: 支付宝mybank2渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>testbar_sale_query_refund_ali_unionpay.TestPayRefund</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',3)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_Pay01: 微信银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.1')" >
+        pass</a>
+
+    <div id='div_pt11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.1: 请扫描支付宝条码:条码是：287629792228767113
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Query: 支付宝银联渠道条码支付查询 json实现接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.2')" >
+        pass</a>
+
+    <div id='div_pt11.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.2: {"buyerUsername":"zha***@163.com","msgType":"trade.query","payTime":"2018-12-25 16:08:28","connectSys":"UNIONPAY","errMsg":"查询成功","merName":"支付宝条码银联渠道回归商户","mid":"898310077774444","invoiceAmount":1,"settleDate":"2018-12-25","billFunds":"花呗:1","buyerId":"2088202859778510","tid":"00810001","couponAmount":0,"targetMid":"2088000622369031","cardAttr":"BALANCE","targetOrderId":"2018122522001478510527027904","billFundsDesc":"花呗支付0.01元。","targetStatus":"SUCCESS","seqId":"00001900042N","merOrderId":"732452357240396824306652230553","refundAmount":0,"targetSys":"Alipay 2.0","msgSrc":"NETPAY","settleRefId":"00004992435W","totalAmount":1,"responseTimestamp":"2018-12-25 16:08:29","errCode":"SUCCESS","buyerPayAmount":1,"goodsTradeNo":"1000201812251608275084547314","refId":"00004992435W","status":"TRADE_SUCCESS","sign":"CB9F02BEDD53D275ECBBD4309CB06DA9"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_Refund: 支付宝银联渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>testbar_sale_query_refund_wx_epcc.TestPayRefund: wechat-epcc-pay-refund</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',3)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_a_Pay01: 微信EPCC渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        pass</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.1: 请扫描条码:条码是：134758641207672482
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt12.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Query: 微信EPCC渠道条码支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.2')" >
+        pass</a>
+
+    <div id='div_pt12.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.2: {"msgType":"wx.orderQuery","payTime":"2018-12-25 16:09:19","connectSys":"EPCC","errMsg":"查询成功","merName":"epcc网联测试商户","mid":"898310077770000","invoiceAmount":1,"settleDate":"2018-12-25","billFunds":"现金:1","buyerId":"oUpF8uMUgaPXRdWjZ4YO1TDD4CKc","tid":"00810001","couponAmount":0,"targetMid":"233241558","cardAttr":"BALANCE","targetOrderId":"4200000238201812254527176112","billFundsDesc":"现金支付0.01元。","targetStatus":"SUCCESS","seqId":"00001900044N","merOrderId":"804955271535285541757300528580","refundAmount":0,"targetSys":"WXPay","bankInfo":"零钱","msgSrc":"NETPAY","settleRefId":"00004992435W","totalAmount":1,"responseTimestamp":"2018-12-25 16:09:19","errCode":"SUCCESS","buyerPayAmount":1,"goodsTradeNo":"1000201812251609181000448912","refId":"00004992435W","status":"TRADE_SUCCESS","sign":"EA969070B6965FD77A4E89615B6D8582"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt12.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_Refund: 微信EPCC渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.3')" >
+        pass</a>
+
+    <div id='div_pt12.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.3: 请求报文：{'merOrderId': '804955271535285541757300528580', 'mid': '898310077770000', 'refundAmount': '1', 'msgSrc': 'NETPAY', 'msgType': 'refund', 'requestTimestamp': '2018-12-25 16:09:19', 'tid': '00000001', 'sign': 'a6ca88c2e3c148194d7da88ec1a8903f'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>testbar_sale_query_refund_wx_unionpay.TestPayRefund</td>
+    <td>3</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',3)">Detail</a></td>
+</tr>
+
+<tr id='ft13.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay01: 微信银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.1')" >
+        fail</a>
+
+    <div id='div_ft13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft13.1: 请扫描条码:条码是：134710269395653114
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_wx_unionpay.py", line 56, in test_a_Pay01
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"bar-code fail"+saleresponse.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in ['TARGET_FAIL', 'SUCCESS'] : bar-code failSYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft13.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_Query: 微信银联渠道条码支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.2')" >
+        fail</a>
+
+    <div id='div_ft13.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft13.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft13.2: {"errCode":"SYSTEM_BUSY","errMsg":"系统繁忙，请稍候再试。","msgSrc":"NETPAY","msgType":"query","responseTimestamp":"2018-12-25 16:10:26","sign":"342794ECC0E5273A95A8A508603B8DE6"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_wx_unionpay.py", line 74, in test_b_Query
+    "barcode-query-unionpay case test result is:--" + response.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' != 'SUCCESS'
+- SYSTEM_BUSY
++ SUCCESS
+ : barcode-query-unionpay case test result is:--SYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft13.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_c_Refund: 微信银联渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.3')" >
+        fail</a>
+
+    <div id='div_ft13.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft13.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft13.3: Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_query_refund_wx_unionpay.py", line 92, in test_c_Refund
+    self.assertIn(response.json().get("errCode"),"SUCCESS","refund fail"+response.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in 'SUCCESS' : refund failSYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>testbar_sale_refund_refundquery_acp.TestPayRefundQuery: 银联云闪付渠道条码-支付-退货-查询</td>
+    <td>3</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',3)">Detail</a></td>
+</tr>
+
+<tr id='ft14.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay: 银联云闪付ACP渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft14.1')" >
+        fail</a>
+
+    <div id='div_ft14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft14.1: 请扫描云闪付条码：条码是6288888888888888
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_acp.py", line 60, in test_a_Pay
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"支付失败errcode："+saleresponse.json().get("errCode"))
+AssertionError: 'BAD_REQUEST' not found in ['TARGET_FAIL', 'SUCCESS'] : 支付失败errcode：BAD_REQUEST
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Refund: 银联云闪付ACP渠道条码支付退货和退货查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.2')" >
+        pass</a>
+
+    <div id='div_pt14.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.2: 退货应答：{"msgType":"acp.refund","payTime":"2018-12-25 16:10:43","connectSys":"ORIGINAL","merName":"acp渠道条码支付测试","mid":"898310148160568","refundStatus":"SUCCESS","settleDate":"2018-12-25","tid":"00000001","targetMid":"48020000","cardAttr":"CREDIT_CARD","targetStatus":"00","seqId":"00001900046N","merOrderId":"798584736152434349673834957276","targetSys":"ACP","bankInfo":"招商银行(03080000)","bankCardNo":"622575******3108","msgSrc":"NETPAY","settleKey":"48020000   00049992   6443221225161043","settleRefId":"00004992435W","refundOrderId":"10001812250101043160343476","totalAmount":1,"responseTimestamp":"2018-12-25 16:10:43","errCode":"SUCCESS","status":"TRADE_SUCCESS","sign":"7482E208552BEC025CD1C2699995A352"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft14.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_c_RefundQuery: 银联云闪付ACP渠道退款查询接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft14.3')" >
+        fail</a>
+
+    <div id='div_ft14.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft14.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft14.3: 退货应答：{"msgType":"acp.refund","payTime":"2018-12-25 16:10:43","connectSys":"ORIGINAL","merName":"acp渠道条码支付测试","mid":"898310148160568","refundStatus":"SUCCESS","settleDate":"2018-12-25","tid":"00000001","targetMid":"48020000","cardAttr":"CREDIT_CARD","targetStatus":"00","seqId":"00001900047N","merOrderId":"798584736152434349673834957276","targetSys":"ACP","bankInfo":"招商银行(03080000)","bankCardNo":"622575******3108","msgSrc":"NETPAY","settleKey":"48020000   00049992   8589511225161043","settleRefId":"00004992435W","refundOrderId":"10001812254391043166251383","totalAmount":1,"responseTimestamp":"2018-12-25 16:10:43","errCode":"SUCCESS","status":"TRADE_SUCCESS","sign":"0CBF3744D8F0819B77D7D586445F02AD"}
+退货查询请求:{"merOrderId":"10001812254391043166251383","mid":"898310148160568",                             "refundAmount":"1","msgSrc":"NETPAY","msgType":"refundQuery","requestTimestamp":"2018-12-25 16:10:42","tid":"00000001"}
+退货查询应答：{"errCode":"BAD_REQUEST","errMsg":"无法判断路由: ACP.refundQuery","msgSrc":"NETPAY","msgType":"refundQuery","responseTimestamp":"2018-12-25 16:10:43","sign":"61DBA31EEEC265F07DDB70301EAFDFDD"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_acp.py", line 95, in test_c_RefundQuery
+    "refund query fail" + refundqueryresponse.json().get("errCode"))
+AssertionError: 'BAD_REQUEST' not found in ['SUCCESS', 'TARGET_FAIL'] : refund query failBAD_REQUEST
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testbar_sale_refund_refundquery_ali_mybank2.TestPayRefundQuery: 支付宝银联渠道条码-支付-退货-查询</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c15',3)">Detail</a></td>
+</tr>
+
+<tr id='ft15.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay: 支付宝银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft15.1')" >
+        fail</a>
+
+    <div id='div_ft15.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft15.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft15.1: 请扫描微信条码条码是282844157443289659
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_ali_mybank2.py", line 60, in test_a_Pay
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"支付失败errcode："+saleresponse.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in ['TARGET_FAIL', 'SUCCESS'] : 支付失败errcode：SYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Refund: 支付宝银联渠道条码支付退货和退货查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.2')" >
+        pass</a>
+
+    <div id='div_pt15.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.2: 退货应答：{"errCode":"SYSTEM_BUSY","errMsg":"系统繁忙，请稍候再试。","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:11:13","sign":"96717BD9F5FCE6AFBFCEC9F595523CBC"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft15.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_c_RefundQuery: 支付宝银联渠道退款查询接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft15.3')" >
+        error</a>
+
+    <div id='div_ft15.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft15.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft15.3: 退货应答：{"errCode":"SYSTEM_BUSY","errMsg":"系统繁忙，请稍候再试。","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:11:13","sign":"96717BD9F5FCE6AFBFCEC9F595523CBC"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_ali_mybank2.py", line 84, in test_c_RefundQuery
+    \"refundAmount\":\"1\",\"msgSrc\":\"NETPAY\",\"msgType\":\"refundQuery\",\"requestTimestamp\":\""+now_time+"\",\"tid\":\"00000001\"}"
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testbar_sale_refund_refundquery_ali_unionpay.TestPayRefundQuery: 支付宝银联渠道条码-支付-退货-查询</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c16',3)">Detail</a></td>
+</tr>
+
+<tr id='ft16.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay: 支付宝银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft16.1')" >
+        fail</a>
+
+    <div id='div_ft16.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft16.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft16.1: 请扫描微信条码条码是283800418409385285
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_ali_unionpay.py", line 60, in test_a_Pay
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"支付失败errcode："+saleresponse.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in ['TARGET_FAIL', 'SUCCESS'] : 支付失败errcode：SYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Refund: 支付宝银联渠道条码支付退货和退货查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.2')" >
+        pass</a>
+
+    <div id='div_pt16.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt16.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt16.2: 退货应答：{"errCode":"NO_ORDER","errMsg":"无法找到指定的订单","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:11:25","sign":"8A0DC6DB055BE22B60B011DE475E2A5D"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft16.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_c_RefundQuery: 支付宝银联渠道退款查询接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft16.3')" >
+        error</a>
+
+    <div id='div_ft16.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft16.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft16.3: 退货应答：{"errCode":"SYSTEM_BUSY","errMsg":"系统繁忙，请稍候再试。","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:11:25","sign":"A94E3F587357203EBEC45D0766A7DF41"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_ali_unionpay.py", line 84, in test_c_RefundQuery
+    \"refundAmount\":\"1\",\"msgSrc\":\"NETPAY\",\"msgType\":\"refundQuery\",\"requestTimestamp\":\""+now_time+"\",\"tid\":\"00000001\"}"
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testbar_sale_refund_refundquery_wx_epcc.TestPayRefundQuery: Wechat-epcc-pay-refund-refundquery</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c17',3)">Detail</a></td>
+</tr>
+
+<tr id='ft17.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay: 微信EPCC渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft17.1')" >
+        fail</a>
+
+    <div id='div_ft17.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft17.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft17.1: 请扫描微信条码条码是134559992637252047
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_wx_epcc.py", line 60, in test_a_Pay
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"支付失败errcode："+saleresponse.json().get("errCode"))
+AssertionError: 'DUP_ORDER' not found in ['TARGET_FAIL', 'SUCCESS'] : 支付失败errcode：DUP_ORDER
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt17.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Refund: 微信EPCC渠道条码支付退货和退货查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.2')" >
+        pass</a>
+
+    <div id='div_pt17.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt17.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt17.2: 退货应答：{"errCode":"NO_ORDER","errMsg":"无法找到指定的订单","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:12:03","sign":"3C8B3801F747D6D22672D18C54DF3B24"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft17.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_c_RefundQuery: wechat-epcc-refundquery</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft17.3')" >
+        error</a>
+
+    <div id='div_ft17.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft17.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft17.3: 退货应答：{"errCode":"NO_ORDER","errMsg":"无法找到指定的订单","msgSrc":"NETPAY","msgType":"refund","responseTimestamp":"2018-12-25 16:12:03","sign":"3C8B3801F747D6D22672D18C54DF3B24"}
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_wx_epcc.py", line 84, in test_c_RefundQuery
+    \"refundAmount\":\"1\",\"msgSrc\":\"NETPAY\",\"msgType\":\"refundQuery\",\"requestTimestamp\":\""+now_time+"\",\"tid\":\"00000001\"}"
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>testbar_sale_refund_refundquery_wx_unionpay.TestPayRefundQuery</td>
+    <td>3</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c18',3)">Detail</a></td>
+</tr>
+
+<tr id='ft18.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay: 微信银联渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft18.1')" >
+        fail</a>
+
+    <div id='div_ft18.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft18.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft18.1: 请扫描微信条码条码是
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"xyz"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_refundquery_wx_unionpay.py", line 59, in test_a_Pay
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"支付失败errcode："+saleresponse.json().get("errCode"))
+AssertionError: 'BAD_REQUEST' not found in ['TARGET_FAIL', 'SUCCESS'] : 支付失败errcode：BAD_REQUEST
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_b_Refund: 微信银联渠道条码支付退货和退货查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.2')" >
+        pass</a>
+
+    <div id='div_pt18.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt18.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt18.2: 退货应答：{"bankInfo":"零钱","msgType":"wx.refund","payTime":"2018-12-25 16:12:04","connectSys":"UNIONPAY","msgSrc":"NETPAY","errMsg":"404_状态未知","merName":"转清渠道测试商户","mid":"898310077778888","refundStatus":"UNKNOWN","settleDate":"2018-12-24","settleRefId":"00004992435W","tid":"00000001","refundOrderId":"10001812258711204162924586","totalAmount":1,"targetMid":"224386838","responseTimestamp":"2018-12-25 16:12:05","errCode":"TARGET_FAIL","cardAttr":"BALANCE","targetStatus":"SUCCESS|FAIL|SYSTEMERROR","seqId":"00404300524N","merOrderId":"798584736152434349673834957276","status":"UNKNOWN","targetSys":"WXPay","sign":"45C94DE2AD461AD9369005889F75C13C"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_c_RefundQuery</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.3')" >
+        pass</a>
+
+    <div id='div_pt18.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt18.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt18.3: 退货应答：{"bankInfo":"零钱","msgType":"wx.refund","payTime":"2018-12-25 16:12:05","connectSys":"UNIONPAY","msgSrc":"NETPAY","errMsg":"404_状态未知","merName":"转清渠道测试商户","mid":"898310077778888","refundStatus":"UNKNOWN","settleDate":"2018-12-24","settleRefId":"00004992435W","tid":"00000001","refundOrderId":"10001812254031205162892767","totalAmount":1,"targetMid":"224386838","responseTimestamp":"2018-12-25 16:12:05","errCode":"TARGET_FAIL","cardAttr":"BALANCE","targetStatus":"SUCCESS|FAIL|SYSTEMERROR","seqId":"00404300525N","merOrderId":"798584736152434349673834957276","status":"UNKNOWN","targetSys":"WXPay","sign":"D390C565B5CC442C6E766835D9EC92D0"}
+退货查询请求:{"merOrderId":"10001812254031205162892767","mid":"898310077778888",                             "refundAmount":"1","msgSrc":"NETPAY","msgType":"refundQuery","requestTimestamp":"2018-12-25 16:12:04","tid":"00000001"}
+退货查询应答：{"msgType":"wx.refundQuery","responseTimestamp":"2018-12-25 16:12:06","errCode":"TARGET_FAIL","msgSrc":"NETPAY","errMsg":"404_状态未知","sign":"FFB65CD573CA98725EDE8899723A16E3"}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>testbar_sale_refund_uac.TestPayRefund: 银联云闪付UAC条码支付-退货</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c19',2)">Detail</a></td>
+</tr>
+
+<tr id='ft19.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_a_Pay01: 银联云闪付UAC渠道条码支付</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft19.1')" >
+        fail</a>
+
+    <div id='div_ft19.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft19.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft19.1: 请扫描云闪付条码:条码是：5555555555555
+[{"quantity":"10","price":"3","goodsCategory":"A001","goodsld":"X001","body":"11","goodsName":"pay+refund"}]
+Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_uac.py", line 56, in test_a_Pay01
+    self.assertIn(saleresponse.json().get("errCode"),["TARGET_FAIL","SUCCESS"],"bar-code fail"+saleresponse.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in ['TARGET_FAIL', 'SUCCESS'] : bar-code failSYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft19.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_b_Refund: 银联云闪付ACP渠道条码支付退货接口</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft19.2')" >
+        fail</a>
+
+    <div id='div_ft19.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft19.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft19.2: Traceback (most recent call last):
+  File "C:\Users\myzhao\PycharmProjects\netpaytest\testcase\barcode-test-case\testbar_sale_refund_uac.py", line 75, in test_b_Refund
+    self.assertIn(response.json().get("errCode"),["SUCCESS","TARGET_FAIL"],"refund fail"+response.json().get("errCode"))
+AssertionError: 'SYSTEM_BUSY' not found in ['SUCCESS', 'TARGET_FAIL'] : refund failSYSTEM_BUSY
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>50</td>
+    <td class="text text-success">30</td>
+    <td class="text text-danger">16</td>
+    <td class="text text-warning">4</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
